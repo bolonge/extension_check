@@ -22,18 +22,31 @@ public class ExtensionController {
 
     @PostMapping("/extension/add")
     public Long postExtension(@RequestParam("name") String name, @RequestParam("isBlock") boolean isBlock, @RequestParam("type") int type) {
+        if (mapper.findIdByName(name) > 0) {
+            return -1L;
+        }
         mapper.insertExtension(name, isBlock, type);
-        return mapper.findByName(name);
+        return mapper.findIdByName(name);
     }
 
     @PostMapping("/extension/update/{id}")
-    public void updateExtension(@PathVariable("id") Long id, @RequestParam("isBlock") boolean isBlock) {
-        mapper.updateExtension(id, isBlock);
+    public String updateExtension(@PathVariable("id") Long id, @RequestParam("isBlock") boolean isBlock) {
+        if (mapper.findById(id) > 0) {
+            mapper.updateExtension(id, isBlock);
+        } else {
+            return "확장자가 존재하지 않습니다.";
+        }
+        return "";
     }
 
     @PostMapping("/extension/delete/{id}")
-    public void deleteExtension(@PathVariable("id") Long id) {
-        mapper.deleteExtension(id);
+    public String deleteExtension(@PathVariable("id") Long id) {
+        if (mapper.findById(id) > 0) {
+            mapper.deleteExtension(id);
+        } else {
+            return "확장자가 존재하지 않습니다.";
+        }
+        return "";
     }
 
 }

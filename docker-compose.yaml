@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - database:/data/mysql/
+  app:
+    image: xxs456/extension-check:version1
+    ports:
+      - 8080:8080
+volumes:
+  mysqldb:

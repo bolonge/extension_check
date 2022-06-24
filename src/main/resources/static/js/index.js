@@ -28,14 +28,18 @@ function createExtension() {
             url: `http://localhost:8080/extension/add?name=${$(text).text()}&isBlock=true&type=2`,
             cache: false,
             success: function(result) {
-                closeBtn.id = `extension.${result}`;
-                newExtension.className = "extension-list";
-                newExtension.appendChild(text);
-                newExtension.appendChild(closeBtn);
-                $("#cnt_extensions").text(parseInt($("#cnt_extensions").text())+1)
-                if($("#cnt_extensions").text() == LIMIT_NUM){
-                    $('#ext_input').attr('disabled',true)
-                    $('#btn_add').attr('disabled',true)
+                if(result < 0){
+                    alert('중복입니다')
+                }else{
+                    closeBtn.id = `extension.${result}`;
+                    newExtension.className = "extension-list";
+                    newExtension.appendChild(text);
+                    newExtension.appendChild(closeBtn);
+                    $("#cnt_extensions").text(parseInt($("#cnt_extensions").text())+1)
+                    if($("#cnt_extensions").text() == LIMIT_NUM){
+                        $('#ext_input').attr('disabled',true)
+                        $('#btn_add').attr('disabled',true)
+                    }
                 }
             },
             error: function(err) {

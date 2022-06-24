@@ -18,8 +18,11 @@ public interface ExtensionMapper {
     @Select("SELECT * FROM extensions")
     List<Extension> findAll();
 
+    @Select("SELECT extensionId FROM extensions WHERE extensionId=#{extensionId}")
+    Long findById(@Param("extensionId") Long extensionId);
+
     @Select("SELECT extensionId FROM extensions WHERE name=#{name}")
-    Long findByName(@Param("name") String name);
+    Long findIdByName(@Param("name") String name);
 
     @Insert("INSERT INTO extensions(name, isBlock, type) VALUES(#{name}, #{isBlock}, #{type})")
     int insertExtension(@Param("name") String name, @Param("isBlock") boolean isBlock, @Param("type") int type);
