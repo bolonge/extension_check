@@ -1,3 +1,5 @@
+const LIMIT_NUM = 200;
+
 $(document).ready(function() {
 			$.getJSON('http://localhost:8080/extension/all', function(json) {
 				let tr=[];
@@ -16,6 +18,10 @@ $(document).ready(function() {
                     }
                 }
                 $('#checkbox_list').append($(tr.join('')));
-                $('#cnt_extensions').text(cnt)
+                $('#cnt_extensions').text(cnt);
+                if(cnt === LIMIT_NUM){
+                    $('#ext_input').attr('disabled',true)
+                    $('#btn_add').attr('disabled',true)
+                }
 			});
 			})

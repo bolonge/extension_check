@@ -33,6 +33,10 @@ function createExtension() {
                 newExtension.appendChild(text);
                 newExtension.appendChild(closeBtn);
                 $("#cnt_extensions").text(parseInt($("#cnt_extensions").text())+1)
+                if($("#cnt_extensions").text() == LIMIT_NUM){
+                    $('#ext_input').attr('disabled',true)
+                    $('#btn_add').attr('disabled',true)
+                }
             },
             error: function(err) {
                 alert("서버 통신을 실패했습니다")
