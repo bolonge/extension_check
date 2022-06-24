@@ -1,4 +1,4 @@
-package com.flow.mapper;
+package com.flow.repository;
 
 import java.util.List;
 
@@ -10,13 +10,16 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.flow.domain.Extension;
-
+import org.springframework.stereotype.Repository;
 
 @Mapper
-public interface ExtensionMapper {
+public interface ExtensionRepository {
 
     @Select("SELECT * FROM extensions")
     List<Extension> findAll();
+
+    @Select("SELECT * FROM extensions WHERE type=2")
+    List<Extension> findByCustomer();
 
     @Select("SELECT extensionId FROM extensions WHERE extensionId=#{extensionId}")
     Long findById(@Param("extensionId") Long extensionId);
