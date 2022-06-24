@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>플로우 | 구본홍 과제</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="main">
+        <div class="user-input-wrapper">
+          <span class="font-wrapper">고정 확장자</span>
+          <div id="checkbox_list" class="content">
+          </div>
+        </div>
+        <div class="user-input-wrapper">
+          <span class="font-wrapper">커스텀 확장자</span>
+          <div class="content">
+            <form id="add_form">
+              <input
+                type="text"
+                id="ext_input"
+                size="35"
+                maxlength="20"
+                required
+              />
+              <button id="btn_add">+ 추가</button>
+            </form>
+            <div id="custom_list_wrapper">
+              <span>
+                <span id="cnt_extensions">0</span>/ 200
+              </span>
+              <div id="custom_list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
+</html>
